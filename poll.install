@@ -10,7 +10,7 @@
  * Implementation of hook_install().
  */
 function poll_install() {
-  theme_enable(array('seven', 'haven'));
+  theme_enable(array('seven', 'tweme'));
   $variables = array(
     'admin_theme' => 'seven',
     'theme_default' => 'tweme',

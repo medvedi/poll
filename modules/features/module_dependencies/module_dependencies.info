@@ -14,7 +14,6 @@ dependencies[] = module_filter
 dependencies[] = options
 dependencies[] = page_manager
 dependencies[] = panels
-dependencies[] = poll_utility
 dependencies[] = strongarm
 dependencies[] = taxonomy
 features[features_api][] = api:2

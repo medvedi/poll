@@ -53,48 +53,21 @@ function poll_install_tasks() {
  */
 function poll_install_features() {
   $files = system_rebuild_module_data();
-
   $features = array();
-  if (isset($files['poll']->info['poll_features']) && is_array($files['poll']->info['poll_features'])) {
-    $features = $files['poll']->info['poll_features'];
+  if (isset($files['module_dependencies']->info['dependencies']) && is_array($files['poll']->info['dependencies'])) {
+    $features = $files['poll']->info['dependencies'];
   }
 
-  $modules = array();
-  foreach ($features as $feature) {
-    $modules[] = $feature;
+  $operations = array();
+  foreach ($features as $module) {
+    $operations[] = array('_install_module_batch', array($module, $files[$module]->info['name']));
   }
 
-  if (!empty($modules)) {
-    foreach ($modules as $module) {
-      if ($files[$module]->requires) {
-        $modules = array_merge($modules, array_keys($files[$module]->requires));
-      }
-    }
-    $modules = array_unique($modules);
-
-    $required = array();
-    $non_required = array();
-    foreach ($modules as $module) {
-      if (!empty($files[$module]->info['required'])) {
-        $required[$module] = $files[$module]->sort;
-      }
-      else {
-        $non_required[$module] = $files[$module]->sort;
-      }
-    }
-    arsort($required);
-    arsort($non_required);
-
-    $operations = array();
-    foreach ($required + $non_required as $module => $weight) {
-      $operations[] = array('_install_module_batch', array($module, $files[$module]->info['name']));
-    }
-    $batch = array(
-      'operations' => $operations,
-      'title' => st('Installing poll features'),
-      'error_message' => st('The installation has encountered an error.'),
-      'finished' => '_install_profile_modules_finished',
-    );
-    return $batch;
-  }
+  $batch = array(
+    'operations' => $operations,
+    'title' => t('Installing poll features'),
+    'error_message' => t('The installation has encountered an error.'),
+    'finished' => '_install_profile_modules_finished',
+  );
+  return $batch;
 }

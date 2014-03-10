@@ -11,7 +11,11 @@
  */
 function poll_utility_init() {
   // Let's check if user is logged in.
-  if (user_is_logged_in() === false && current_path() != 'user/login') {
+  $links_array = array(
+    'user/login',
+  );
+
+  if (user_is_logged_in() === false && !in_array(current_path(), $links_array)) {
     // We will redirect anon user to front page with login form.
 
     // @TODO: Find another way for redirect.
