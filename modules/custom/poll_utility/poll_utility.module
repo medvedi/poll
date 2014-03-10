@@ -21,7 +21,7 @@ function poll_utility_init() {
     // @TODO: Find another way for redirect.
     drupal_goto('user/login', array(), 302);
   }
-  else {
-    // drupal_goto('home', array(), 302);
+  elseif (user_is_logged_in() === true) {
+    // drupal_goto('', array(), 302);
   }
 }
