@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Utility functions for the events site.
+ */
+
+/* --- HOOKS ---------------------------------------------------------------- */
+
+/**
+ * Implements hook_init().
+ */
+function poll_utility_init() {
+  // Let's check if user is logged in.
+  if (user_is_logged_in() === false && current_path() != 'user/login') {
+    // We will redirect anon user to front page with login form.
+
+    // @TODO: Find another way for redirect.
+    drupal_goto('user/login', array(), 302);
+  }
+  else {
+    // drupal_goto('home', array(), 302);
+  }
+}

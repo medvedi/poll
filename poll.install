@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Install file for the Haven installation profile.
+ */
+
+/* --- HOOKS ---------------------------------------------------------------- */
+
+/**
+ * Implementation of hook_install().
+ */
+function poll_install() {
+  theme_enable(array('seven', 'haven'));
+  $variables = array(
+    'admin_theme' => 'seven',
+    'theme_default' => 'tweme',
+    'configurable_timezones' => 0,
+    'date_first_day' => 1,
+    'date_format_long' => 'l, j. F Y - G:i',
+    'date_format_medium' => 'D, d/m/Y - H:i',
+    'date_format_short' => 'd/m/Y - H:i',
+    'node_admin_theme' => 1,
+  );
+  foreach ($variables as $key => $variable) {
+    variable_set($key, $variable);
+  }
+}
