@@ -4,4 +4,3 @@ core = 7.x
 distribution_name = Poll
 
 dependencies[] = module_dependencies
-dependencies[] = poll_settings
