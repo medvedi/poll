@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Install profile for the Haven project.
+ * Install profile for the Quiz project.
  */
 
 /* --- HOOKS ---------------------------------------------------------------- */
@@ -9,7 +9,7 @@
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function poll_form_install_configure_form_alter(&$form, $form_state) {
+function quiz_form_install_configure_form_alter(&$form, $form_state) {
   // basic site information
   $form['site_information']['site_name']['#default_value'] = 'Wish list';
   $form['site_information']['site_mail']['#default_value'] = 'ag@peytz.dk';
@@ -37,10 +37,10 @@ function poll_form_install_configure_form_alter(&$form, $form_state) {
 /**
  * Implements hook_install_tasks().
  */
-function poll_install_tasks() {
+function quiz_install_tasks() {
   return array(
-    'poll_install_features' => array(
-      'display_name' => st('Install Poll features'),
+    'quiz_install_features' => array(
+      'display_name' => st('Install quiz features'),
       'type' => 'batch',
     ),
   );
@@ -51,11 +51,11 @@ function poll_install_tasks() {
 /**
  * Install features.
  */
-function poll_install_features() {
+function quiz_install_features() {
   $files = system_rebuild_module_data();
   $features = array();
-  if (isset($files['module_dependencies']->info['dependencies']) && is_array($files['poll']->info['dependencies'])) {
-    $features = $files['poll']->info['dependencies'];
+  if (isset($files['module_dependencies']->info['dependencies']) && is_array($files['quiz']->info['dependencies'])) {
+    $features = $files['quiz']->info['dependencies'];
   }
 
   $operations = array();
@@ -65,7 +65,7 @@ function poll_install_features() {
 
   $batch = array(
     'operations' => $operations,
-    'title' => t('Installing poll features'),
+    'title' => t('Installing quiz features'),
     'error_message' => t('The installation has encountered an error.'),
     'finished' => '_install_profile_modules_finished',
   );

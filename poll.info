@@ -1,6 +1,0 @@
-name = Poll
-description = Install Poll profile.
-core = 7.x
-distribution_name = Poll
-
-dependencies[] = module_dependencies

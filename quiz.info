@@ -1,0 +1,6 @@
+name = Quiz
+description = Install Quiz profile.
+core = 7.x
+distribution_name = Quiz
+
+dependencies[] = module_dependencies

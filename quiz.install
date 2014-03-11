@@ -9,7 +9,7 @@
 /**
  * Implementation of hook_install().
  */
-function poll_install() {
+function quiz_install() {
   theme_enable(array('seven', 'tweme'));
   $variables = array(
     'admin_theme' => 'seven',
