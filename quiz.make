@@ -8,6 +8,9 @@ api = 2
 
 ; contrib modules
 
+projects[ajax_poll][subdir] = "contrib"
+projects[ajax_poll][version] = 1.1
+
 projects[admin_menu][subdir] = "contrib"
 projects[admin_menu][version] = 3.0-rc4
 
