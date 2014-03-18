@@ -1,0 +1,6 @@
+name = Events
+description = Install Events profile.
+core = 7.x
+distribution_name = Events
+
+dependencies[] = module_dependencies

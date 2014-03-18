@@ -1,4 +1,4 @@
-; makefile for Quiz
+; makefile for Events
 
 ; define core version and drush make compatibility
 
